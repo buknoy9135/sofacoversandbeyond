@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins, skip: [ :registrations ]
   get "quote_requests/new"
   get "quote_requests/create"
   # get "products/index"

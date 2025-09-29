@@ -33,7 +33,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem "cloudinary", require: false
+gem "cloudinary"
 gem "activestorage-cloudinary-service"
 
 gem "dotenv-rails", "~> 3.1", ">= 3.1.8"
@@ -62,3 +62,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise", "~> 4.9"

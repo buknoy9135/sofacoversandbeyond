@@ -10,19 +10,28 @@
   %>
 
   <div
-    data-controller="flash"
-    class="fixed top-4 right-4 z-100 w-auto max-w-sm px-4 py-2 border shadow-lg flex items-center justify-between space-x-3 transform translate-x-full opacity-0 data-[visible='true']:translate-x-0 data-[visible='true']:opacity-100 transition-transform duration-300 ease-out <%= css_classes %>"
+    class="flash-message fixed top-4 right-4 z-50 w-auto max-w-sm px-4 py-2 border shadow-lg rounded flex items-center justify-between space-x-3 <%= css_classes %>"
     role="alert"
-    data-flash-target="container"
   >
     <p class="text-sm"><%= message %></p>
     <button
       type="button"
       class="ml-2 text-gray-500 hover:text-gray-700 focus:outline-none"
       aria-label="Close"
-      data-action="click->flash#close"
+      onclick="this.parentElement.remove();"
     >
       ×
     </button>
   </div>
 <% end %>
+
+<script>
+  // Auto-hide flash after 3 seconds with fade out
+  document.querySelectorAll(".flash-message").forEach(function(flash) {
+    setTimeout(() => {
+      flash.style.transition = "opacity 0.5s ease";
+      flash.style.opacity = "0";
+      setTimeout(() => flash.remove(), 500); // remove from DOM after fade out
+    }, 3000);
+  });
+</script>

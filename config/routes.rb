@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admins, skip: [ :registrations ]
-  get "quote_requests/new"
-  get "quote_requests/create"
-  # get "products/index"
-  # get "products/show"
-  # get "products/new"
-  # get "products/create"
-  # get "products/edit"
-  # get "products/update"
-  # get "products/destroy"
+
   resources :products
+  resources :quote_requests, only: [ :new, :create ]
+
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,14 @@
+New Quote Request
+
+Name: <%= @quote_request.name %>
+Email: <%= @quote_request.email %>
+Phone: <%= @quote_request.contact %>
+
+Message:
+<%= @quote_request.message %>
+
+<% if @quote_request.product %>
+Product: <%= @quote_request.product.name %>
+<% end %>
+
+Attached images (if any) are included with this email.

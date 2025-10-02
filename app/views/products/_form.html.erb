@@ -20,9 +20,13 @@
     <%= f.text_area :description, rows: 4, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
   </div>
 
+  <!-- Optional Price -->
   <div>
     <%= f.label :price, "Price (optional)", class: "block text-sm font-medium text-gray-700" %>
-    <%= f.number_field :price, step: 0.01, placeholder: "Leave blank if not applicable", class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm h-12" %>
+    <%= f.number_field :price,
+          step: 0.01,
+          placeholder: "Leave blank if not applicable",
+          class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm h-12" %>
   </div>
 
   <div>
@@ -32,7 +36,7 @@
       <div class="flex flex-wrap gap-4 mb-2">
         <% @product.images.each do |image| %>
           <div class="flex flex-col items-center gap-2">
-            <%= image_tag image, class: "h-20 w-20 object-cover rounded", loading: "lazy" %>
+            <%= image_tag image, class: "h-20 w-20 object-cover rounded" %>
             <%= hidden_field_tag "product[remove_image_ids][]", nil %>
             <%= check_box_tag "product[remove_image_ids][]", image.id, false, id: "remove_image_#{image.id}" %>
             <%= label_tag "remove_image_#{image.id}", "Remove", class: "text-sm text-red-600" %>
@@ -50,6 +54,7 @@
   </div>
 
   <div>
-    <%= f.submit @product.new_record? ? "Create Product" : "Update Product", class: "w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 font-medium rounded-md text-lg transition" %>
+    <%= f.submit @product.new_record? ? "Create Product" : "Update Product",
+             class: "w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 font-medium rounded-md text-lg transition" %>
   </div>
 <% end %>

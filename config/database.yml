@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: sofa_covers_and_beyond_development
@@ -78,8 +77,12 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: sofa_covers_and_beyond_production
+#   username: sofa_covers_and_beyond
+#   password: <%= ENV["SOFA_COVERS_AND_BEYOND_DATABASE_PASSWORD"] %>
+
 production:
   <<: *default
-  database: sofa_covers_and_beyond_production
-  username: sofa_covers_and_beyond
-  password: <%= ENV["SOFA_COVERS_AND_BEYOND_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

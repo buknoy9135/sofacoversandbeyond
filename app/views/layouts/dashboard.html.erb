@@ -30,9 +30,9 @@
   let currentIndex = 0;
   let images = [];
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("turbo:load", () => {
     document.querySelectorAll("[data-images]").forEach(img => {
-      img.addEventListener("click", (e) => {
+      img.addEventListener("click", () => {
         images = JSON.parse(img.dataset.images);
         currentIndex = parseInt(img.dataset.index, 10);
         showLightbox();

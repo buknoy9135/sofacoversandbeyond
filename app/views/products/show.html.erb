@@ -27,8 +27,9 @@
       <% if @product.images.attached? %>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           <% @product.images.each_with_index do |photo, index| %>
-            <%= image_tag photo, 
+            <%= image_tag photo.variant(resize_to_limit: [400, 400]),
                   class: "w-full h-36 sm:h-44 object-cover rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer",
+                  loading: "lazy",
                   data: { index: index, images: @product.images.map { |p| url_for(p) }.to_json } %>
           <% end %>
         </div>

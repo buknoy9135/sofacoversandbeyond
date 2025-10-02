@@ -36,6 +36,9 @@ gem "bootsnap", require: false
 gem "cloudinary"
 gem "activestorage-cloudinary-service"
 
+gem "image_processing", "~> 1.12" # already standard with Rails for ActiveStorage
+gem "mini_magick", "~> 4.13"
+
 gem "dotenv-rails", "~> 3.1", ">= 3.1.8"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

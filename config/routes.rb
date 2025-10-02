@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-  match "*path", to: "errors#not_found", via: :all
+  # Catch-all route for 404, excluding Active Storage
+  match "*path", to: "errors#not_found", via: :all, constraints: lambda { |req|
+    req.path.exclude?("/rails/active_storage")
+  }
 end

@@ -26,3 +26,39 @@
     </main>
   </body>
 </html>
+<script>
+  let currentIndex = 0;
+  let images = [];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-images]").forEach(img => {
+      img.addEventListener("click", (e) => {
+        images = JSON.parse(img.dataset.images);
+        currentIndex = parseInt(img.dataset.index, 10);
+        showLightbox();
+      });
+    });
+  });
+
+  function showLightbox() {
+    document.getElementById("lightboxImage").src = images[currentIndex];
+    document.getElementById("lightbox").classList.remove("hidden");
+    document.getElementById("lightbox").classList.add("flex");
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").classList.remove("flex");
+    document.getElementById("lightbox").classList.add("hidden");
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showLightbox();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showLightbox();
+  }
+</script>
+

@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_admin!, except: [ :index, :show ]
   before_action :set_product, only: [ :show, :edit, :update, :destroy ]
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   layout "dashboard"
 
   def index
@@ -68,5 +70,13 @@ class ProductsController < ApplicationController
       images: [],
       remove_image_ids: []
     )
+  end
+
+  def record_not_found
+    redirect_to products_path, alert: "Record does not exist."
+  end
+
+  def safe_parse_events(json_string)
+    JSON.parse(json_string) rescue []
   end
 end

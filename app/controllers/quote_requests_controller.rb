@@ -18,7 +18,7 @@ class QuoteRequestsController < ApplicationController
       QuoteRequestMailer.with(
         quote_request: @quote_request,
         images: images_for_mail
-      ).new_quote_request.deliver_now
+      ).new_quote_request.deliver_later
 
       redirect_to root_path, notice: "Your request has been sent!"
     else

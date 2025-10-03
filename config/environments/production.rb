@@ -65,5 +65,8 @@ Rails.application.configure do
   config.active_record.attributes_for_inspect = [ :id ]
 
   # Hosts: allow requests from your domain
-  config.hosts << ENV["HOSTNAME"] if ENV["HOSTNAME"].present?
+  if ENV["HOSTNAME"].present?
+    config.hosts << ENV["HOSTNAME"]            # e.g. sofacoversandbeyond.com
+    config.hosts << "www.#{ENV["HOSTNAME"]}"   # also allow www.sofacoversandbeyond.com
+  end
 end

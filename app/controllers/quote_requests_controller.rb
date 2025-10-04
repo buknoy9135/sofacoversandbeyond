@@ -1,13 +1,7 @@
 class QuoteRequestsController < ApplicationController
   def new
     @quote_request = QuoteRequest.new
-    @product = Product.find_by(id: params[:product_id])
-
-    # meta tag
-    prepare_meta_tags(
-      title: "Request a Quote | Sofa Covers and Beyond",
-      description: "Get a personalized quote for sofa covers, curtains, and home decor. Upload photos or select a product for a quick estimate."
-    )
+    @product = Product.find_by(id: params[:product_id]) # pre-fill if product button clicked
   end
 
   def create
@@ -16,6 +10,7 @@ class QuoteRequestsController < ApplicationController
     if @quote_request.save
       uploaded_images = Array(params[:quote_request][:images]).reject(&:blank?)
 
+      # Convert uploaded files to a serializable format
       images_for_mail = uploaded_images.map do |f|
         { filename: f.original_filename, content: f.read, type: f.content_type }
       end

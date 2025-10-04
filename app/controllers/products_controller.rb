@@ -11,8 +11,9 @@ class ProductsController < ApplicationController
 
     # meta tag
     prepare_meta_tags(
-      title: "Shop Sofa Covers, Curtains & Home Decor",
-      description: "Explore our full range of sofa covers, curtains, bed sheets, pillow covers, and upholstery for your home."
+      title: @product.name,
+      description: @product.description.truncate(150),
+      image: @product.images.attached? ? url_for(@product.images.first) : view_context.image_url("og-image.jpg")
     )
   end
 
@@ -20,7 +21,8 @@ class ProductsController < ApplicationController
     #  meta tag
     prepare_meta_tags(
       title: @product.name,
-      description: @product.description.truncate(150)
+      description: @product.description.truncate(150),
+      image: @product.images.attached? ? url_for(@product.images.first) : view_context.image_url("og-image.jpg")
     )
   end
 

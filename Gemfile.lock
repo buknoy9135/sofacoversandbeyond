@@ -160,6 +160,8 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
+    meta-tags (2.22.1)
+      actionpack (>= 6.0.0, < 8.1)
     mini_mime (1.1.5)
     minitest (5.25.5)
     msgpack (1.8.0)
@@ -302,6 +304,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -365,11 +369,13 @@ DEPENDENCIES
   dotenv-rails (~> 3.1, >= 3.1.8)
   jbuilder
   jsbundling-rails
+  meta-tags
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.2)
   rubocop-rails-omakase
   selenium-webdriver
+  sitemap_generator
   sprockets-rails
   stimulus-rails
   turbo-rails

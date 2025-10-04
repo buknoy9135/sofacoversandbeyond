@@ -36,19 +36,14 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-
-  # Disable caching for Action Mailer templates even if Action Controller
-  # caching is enabled.
   config.action_mailer.perform_caching = false
-
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-
+  config.action_mailer.default_url_options = { host: ENV["HOSTNAME"], protocol: "https" }
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.zoho.com",
     port: 587,
-    domain: "gmail.com",
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
+    domain: "sofacoversandbeyond.com", # your domain
+    user_name: ENV["ZOHO_USERNAME"],   # e.g. info@sofacoversandbeyond.com
+    password: ENV["ZOHO_PASSWORD"],
     authentication: "plain",
     enable_starttls_auto: true
   }

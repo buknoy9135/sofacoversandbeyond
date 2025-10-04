@@ -24,16 +24,16 @@ Rails.application.configure do
   # Use Cloudinary for Active Storage
   config.active_storage.service = :cloudinary
 
-  # Action Mailer configuration (Gmail SMTP)
+  # Action Mailer configuration (Zoho SMTP)
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: ENV["HOSTNAME"], protocol: "https" }
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.zoho.com",
     port: 587,
-    domain: "gmail.com",
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
+    domain: "sofacoversandbeyond.com", # your domain
+    user_name: ENV["ZOHO_USERNAME"],   # e.g. info@sofacoversandbeyond.com
+    password: ENV["ZOHO_PASSWORD"],
     authentication: "plain",
     enable_starttls_auto: true
   }

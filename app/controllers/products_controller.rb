@@ -11,9 +11,11 @@ class ProductsController < ApplicationController
 
     # meta tag
     prepare_meta_tags(
-      title: @product.name,
-      description: @product.description.truncate(150),
-      image: @product.images.attached? ? url_for(@product.images.first) : view_context.image_url("og-image.jpg")
+      title: "Shop Sofa Covers, Curtains & Home Decor",
+      description: "Browse our full range of sofa covers, curtains, bed sheets, and more.",
+      og: {
+        image: view_context.image_url("og-image.jpg") # default image
+      }
     )
   end
 

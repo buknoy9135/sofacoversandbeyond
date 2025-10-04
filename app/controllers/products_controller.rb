@@ -8,9 +8,21 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
+    # meta tag
+    prepare_meta_tags(
+      title: "Shop Sofa Covers, Curtains & Home Decor",
+      description: "Explore our full range of sofa covers, curtains, bed sheets, pillow covers, and upholstery for your home."
+    )
   end
 
-  def show; end
+  def show
+    #  meta tag
+    prepare_meta_tags(
+      title: @product.name,
+      description: @product.description.truncate(150)
+    )
+  end
 
   def new
     @product = Product.new
@@ -74,9 +86,5 @@ class ProductsController < ApplicationController
 
   def record_not_found
     redirect_to products_path, alert: "Record does not exist."
-  end
-
-  def safe_parse_events(json_string)
-    JSON.parse(json_string) rescue []
   end
 end

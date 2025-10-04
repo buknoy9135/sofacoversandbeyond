@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Sofa Covers And Beyond" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= content_for?(:title) ? yield(:title) : "Sofa Covers and Beyond | Premium Sofa Covers" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <%= csrf_meta_tags %>
@@ -14,8 +14,27 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Discover stylish, durable, and affordable sofa covers at Sofa Covers and Beyond. Protect your furniture and refresh your living space.">
+    <meta name="keywords" content="sofa covers, furniture covers, curtains, chair covers, couch protectors, home decor, sofa protector">
+    <meta name="author" content="Sofa Covers and Beyond">
+
+    <!-- Open Graph (for Facebook & LinkedIn) -->
+    <meta property="og:title" content="Sofa Covers and Beyond">
+    <meta property="og:description" content="Stylish and durable sofa covers to protect and beautify your home.">
+    <meta property="og:image" content="<%= image_url('og-image.jpg') %>">
+    <meta property="og:url" content="https://sofacoversandbeyond.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sofa Covers and Beyond">
+    <meta name="twitter:description" content="Discover stylish, durable, and affordable sofa covers.">
+    <meta name="twitter:image" content="<%= image_url('og-image.jpg') %>">
   </head>
 
   <body>

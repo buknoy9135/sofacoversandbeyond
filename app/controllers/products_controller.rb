@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   layout "dashboard"
 
   def index
-    @products = Product.all
+    @products = Product.order(created_at: :desc)
 
     # meta tag
     prepare_meta_tags(

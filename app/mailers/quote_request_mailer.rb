@@ -12,6 +12,9 @@ class QuoteRequestMailer < ApplicationMailer
       "New Quote Request for #{@quote_request.product.name}" :
       "New General Quote Request"
 
-    mail(to: "info@sofacoversandbeyond.com", cc: @quote_request.email, subject: subject_line)
+    mail(
+      to: [ "info@sofacoversandbeyond.com", @quote_request.email ],
+      subject: subject_line
+    )
   end
 end

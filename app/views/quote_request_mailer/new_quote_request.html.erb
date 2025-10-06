@@ -1,14 +1,88 @@
-<h1>New Quote Request</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Quote Request</title>
+  <style>
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; border-radius: 0 !important; }
+      .header h1 { font-size: 22px !important; }
+      .header p { font-size: 14px !important; }
+      .content h2 { font-size: 18px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f9fafb; font-family: Arial, sans-serif;">
 
-<p><strong>Name:</strong> <%= @quote_request.name %></p>
-<p><strong>Email:</strong> <%= @quote_request.email %></p>
-<p><strong>Phone:</strong> <%= @quote_request.contact %></p>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9fafb; padding:20px 0;">
+    <tr>
+      <td align="center">
+        <table cellpadding="0" cellspacing="0" border="0" class="container" width="600" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden;">
 
-<p><strong>Message:</strong></p>
-<p><%= simple_format(@quote_request.message) %></p>
+          <!-- Header -->
+          <tr>
+            <td align="center" class="header" style="background-color:#4F46E5; color:#ffffff; padding:40px 20px;">
+              <h1 style="margin:0; font-size:28px; font-weight:bold;">📩 New Quote Request</h1>
+              <p style="margin:8px 0 0; font-size:16px; color:#dbeafe;">You’ve received a new request from your website</p>
+            </td>
+          </tr>
 
-<% if @quote_request.product %>
-  <p><strong>Product:</strong> <%= @quote_request.product.name %></p>
-<% end %>
+          <!-- CC Notification -->
+          <tr>
+            <td style="background-color:#e0f2fe; padding:16px; text-align:center; border-bottom:1px solid #bae6fd;">
+              <p style="margin:0; font-size:14px; color:#0369a1;">
+                💡 Hello <strong><%= @quote_request.name %></strong>, your request has been received! You are on CC for your reference.
+              </p>
+            </td>
+          </tr>
 
-<p>Attached images (if any) are included with this email.</p>
+          <!-- Main Content -->
+          <tr>
+            <td style="padding:40px 20px; text-align:left;" class="content">
+              
+              <div style="margin-bottom:16px;">
+                <strong>Name:</strong> <%= @quote_request.name %>
+              </div>
+
+              <div style="margin-bottom:16px;">
+                <strong>Email:</strong> <%= @quote_request.email %>
+              </div>
+
+              <div style="margin-bottom:16px;">
+                <strong>Phone:</strong> <%= @quote_request.contact %>
+              </div>
+
+              <% if @quote_request.product %>
+              <div style="margin-bottom:16px;">
+                <strong>Product:</strong> <%= @quote_request.product.name %>
+              </div>
+              <% end %>
+
+              <div style="margin-bottom:24px;">
+                <strong>Message:</strong>
+                <div style="background-color:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:16px; margin-top:8px; color:#1f2937;">
+                  <%= simple_format(@quote_request.message) %>
+                </div>
+              </div>
+
+              <p style="margin-top:16px; font-size:14px; color:#555;">
+                Attached images (if any) are included with this email.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#f3f4f6; padding:24px; text-align:center;">
+              <p style="margin:0; font-size:12px; color:#6b7280;">© <%= Time.now.year %> Sofa Covers & Beyond. All rights reserved.</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
